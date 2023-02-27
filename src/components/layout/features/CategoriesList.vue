@@ -1,9 +1,10 @@
 <template>
      <ul class="categorie">
+      <router-link to="/photos/:category">
         <Button
         :key="id"
         v-for="(category, id) in categories"
-        class="p-button-rounded p-button-outlined ml-2">{{ category.name }}</Button>
+        class="p-button-rounded p-button-outlined ml-2">{{ category.name }}</Button></router-link>
     </ul>
 </template>
 

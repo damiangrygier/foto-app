@@ -106,7 +106,7 @@ export default createStore({
 
     addVote ({ commit }, _id) {
       axios.put(`${apiUrl}/photos/vote/${_id}`, _id)
-      commit('ADD_VOTE')
+      commit('ADD_VOTE', _id)
       console.log('addvote')
       console.log(_id)
     }
