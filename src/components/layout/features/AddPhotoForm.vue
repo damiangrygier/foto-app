@@ -1,6 +1,5 @@
 <template>
     <div class="addPhoto">
-        <div class="container">
             <form class="form">
                 <label for="title">Title</label>
                 <InputText placeholder="title" v-model="form.title" />
@@ -17,8 +16,9 @@
                 <Button label="Add" icon="pi pi-plus" class="p-button-rounded p-button-success" type="submit" />
             </form>
 
-        </div>
-        <image-upload class="im"/>
+        <image-upload
+        class="imageUplauder"
+        @choose="uplaudPhoto" />
     </div>
 </template>
 
@@ -40,6 +40,12 @@ export default {
       file: null
     }
   }),
+  methods: {
+    uplaudPhoto () {
+      this.form.file = this.image.file
+      console.log(this.form.file)
+    }
+  },
   components: {
     InputText,
     Listbox,
@@ -54,20 +60,17 @@ export default {
 <style lang="scss" scoped>
 
 .addPhoto {
-    // display: flex;
-    // justify-content: space-around;
-    // width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0px 300px 0px 300px;
 }
 
-.container {
-    // display: flex;
-    // justify-content: space-between;
-    // flex-direction: row;
-    // width: 100%;
     .form {
         display: flex;
         flex-direction: column;
-        width: 40%;
+        width: 30%;
 
         label {
             padding: 15px 0px 10px 5px;
@@ -79,9 +82,8 @@ export default {
         }
     }
 
-    .im {
-        width: 100%;
+    .imageUplauder {
+        width: 60%;
     }
-}
 
 </style>
