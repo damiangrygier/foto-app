@@ -10,6 +10,6 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'AppFooter',
-  computed: mapGetters({ categoriesAmount: 'CategoriesAmount' })
+  computed: mapGetters('Categories', { categoriesAmount: 'CategoriesAmount' })
 }
 </script>

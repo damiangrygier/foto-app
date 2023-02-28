@@ -28,10 +28,10 @@ export default {
       type: String
     }
   },
-  computed: mapGetters({ photos: 'Photos', photoRequest: 'PhotoRequest' }),
+  computed: mapGetters('Photos', { photos: 'Photos', photoRequest: 'PhotoRequest' }),
   methods: {
     ...mapState(['photosRequest']),
-    ...mapActions(['fetchPhotos', 'fetchCategoryPhotos', 'addVote']),
+    ...mapActions('Photos', ['fetchPhotos', 'fetchCategoryPhotos', 'addVote']),
     loadPhotos () {
       this.currentPage++
       if (!this.category) this.fetchPhotos(this.currentPage)
