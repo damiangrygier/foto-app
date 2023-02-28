@@ -1,6 +1,6 @@
 <template>
      <ul class="categorie">
-      <router-link to="/photos/:category">
+      <router-link to="/photos/:category" class="no-underline">
         <Button
         :key="id"
         v-for="(category, id) in categories"

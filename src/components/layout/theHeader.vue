@@ -6,7 +6,7 @@
                 <p class="bold">PhotosApp |</p>
                 <p class="normal">share your moments</p>
             </Button></router-link>
-            <Button label="Submit" icon="pi pi-plus" class="p-button-rounded" />
+            <router-link to="/add-photo" class="no-underline"><Button label="Submit" icon="pi pi-plus" class="p-button-rounded" /></router-link>
         </div>
         <div>
             <categories-list
