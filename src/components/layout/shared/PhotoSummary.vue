@@ -12,12 +12,12 @@
                   <slot></slot>
                 </div>
               </template>
-              <template #title>
-                <div class="title">
-                  <p>{{ _id }}</p>
-                    <p>{{ title }}</p>
-                </div>
-            </template>
+                <template #title>
+                  <router-link to="/photos/:category/:photoId" class="no-underline">
+                  <div class="title">
+                      <p>{{ title }}</p>
+                  </div></router-link>
+              </template>
             <template #subtitle>
                 <div class="subtitle">
                     <p>{{ author }}</p>
@@ -27,7 +27,7 @@
                 <div class="footer">
                     <Button icon="pi pi-bookmark" label="Fashion" class="p-button-rounded p-button-outlined" />
                 </div>
-            </template>
+              </template>
         </Card>
     </div>
 </template>

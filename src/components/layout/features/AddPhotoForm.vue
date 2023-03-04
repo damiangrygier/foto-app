@@ -46,10 +46,10 @@ export default {
       author: '',
       description: '',
       category: '',
-      file: null,
-      isSuccess: false,
-      isError: false
-    }
+      file: null
+    },
+    isSuccess: false,
+    isError: false
   }),
   computed: {
     ...mapGetters('Categories', { categories: 'Categories' }),

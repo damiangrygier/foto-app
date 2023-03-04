@@ -2,6 +2,7 @@
   <div class="home">
     <page-title>Photos</page-title>
     <photos-catalog />
+    <router-view></router-view>
   </div>
 </template>
 
