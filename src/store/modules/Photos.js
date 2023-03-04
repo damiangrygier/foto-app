@@ -55,8 +55,10 @@ export default {
       state.allPhotosLoaded = !state.allPhotosLoaded
     },
     ADD_VOTE (state, _id) {
-      state.photos._id = _id
-      console.log(state.photos._id)
+      const photo = state.photos.find(photo => photo._id === _id)
+      if (photo) {
+        photo.votes++
+      }
     }
   },
   actions: {
@@ -91,7 +93,7 @@ export default {
     },
 
     addVote ({ commit }, _id) {
-      axios.put(`${apiUrl}/photos/vote/${_id}`, _id)
+      axios.put(`${apiUrl}/photos/vote/${_id}`)
       commit('ADD_VOTE', _id)
       console.log('addvote')
       console.log(_id)

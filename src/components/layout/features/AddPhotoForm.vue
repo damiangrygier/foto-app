@@ -1,5 +1,5 @@
 <template>
-    <div class="addPhoto">
+    <div class="addPhoto" v-on:submit.prevent="handleSubmit">
             <form class="form">
                 <label for="title">Title</label>
                 <InputText placeholder="title" v-model="form.title" />
@@ -13,21 +13,30 @@
                 <label for="description">Description</label>
                 <Textarea v-model="form.description" />
 
-                <Button label="Add" icon="pi pi-plus" class="p-button-rounded p-button-success" type="submit" />
+                <Button label="Add" icon="pi pi-plus" class="p-button-rounded p-button-success" type="submit"
+                @click="handleSubmit" />
             </form>
 
         <image-upload
-        class="imageUplauder"
-        @choose="uplaudPhoto" />
+        class="imageUploader"
+        @choose="uploadPhoto" />
+
+        <Message severity="success" v-if="isSuccess">Success! Your photo has been submitted</Message>
+        <Message severity="error" v-if="isError">Oops… something went wrong…</Message>
     </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import axios from 'axios'
+import Message from 'primevue/message'
 import InputText from 'primevue/inputtext'
 import Listbox from 'primevue/listbox'
 import Textarea from 'primevue/textarea'
 import Button from 'primevue/button'
 import ImageUpload from '../shared/ImageUpload.vue'
+
+const apiUrl = 'http://localhost:8000/api'
 
 export default {
   name: 'AddPhotoForm',
@@ -37,13 +46,40 @@ export default {
       author: '',
       description: '',
       category: '',
-      file: null
+      file: null,
+      isSuccess: false,
+      isError: false
     }
   }),
+  computed: {
+    computed: mapGetters('Categories', { categories: 'Categories' }),
+    categoryNames () {
+      return this.categories.map(category => category.name)
+    }
+  },
   methods: {
-    uplaudPhoto () {
-      this.form.file = this.image.file
-      console.log(this.form.file)
+    uploadPhoto (file) {
+      this.form.file = file
+    },
+    async handleSubmit () {
+      this.isSuccess = false
+      this.isError = false
+      const formData = new FormData()
+      formData.append('title', this.form.title)
+      formData.append('author', this.form.author)
+      formData.append('category', this.form.category)
+      formData.append('description', this.form.description)
+      formData.append('file', this.form.file)
+
+      await axios.post(`${apiUrl}/photos`, formData, { 'Content-Type': 'multipart/form-data' })
+        .then(response => {
+          console.log(response.data)
+          this.isSuccess = true
+        })
+        .catch(error => {
+          console.error(error)
+          this.isError = true
+        })
     }
   },
   components: {
@@ -51,7 +87,8 @@ export default {
     Listbox,
     Textarea,
     Button,
-    ImageUpload
+    ImageUpload,
+    Message
   }
 }
 
@@ -82,7 +119,7 @@ export default {
         }
     }
 
-    .imageUplauder {
+    .imageUploader {
         width: 60%;
     }
 

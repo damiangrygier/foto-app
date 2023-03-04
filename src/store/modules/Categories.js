@@ -12,6 +12,9 @@ export default {
     },
     CategoriesAmount (state) {
       return state.categories.length
+    },
+    CategoriesName (state, index) {
+      return state.categories[index].name
     }
   },
   mutations: {
