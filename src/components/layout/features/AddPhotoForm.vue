@@ -52,7 +52,7 @@ export default {
     }
   }),
   computed: {
-    computed: mapGetters('Categories', { categories: 'Categories' }),
+    ...mapGetters('Categories', { categories: 'Categories' }),
     categoryNames () {
       return this.categories.map(category => category.name)
     }
