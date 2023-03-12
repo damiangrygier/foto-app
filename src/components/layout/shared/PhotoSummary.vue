@@ -1,5 +1,6 @@
 <template>
-    <div>
+  <div>
+      <router-link :to="singlePhoto" class="no-underline">
         <Card class="card">
             <template #header>
                 <div class="image" >
@@ -13,10 +14,9 @@
                 </div>
               </template>
                 <template #title>
-                  <router-link to="/photos/:category/:photoId" class="no-underline">
                   <div class="title">
                       <p>{{ title }}</p>
-                  </div></router-link>
+                  </div>
               </template>
             <template #subtitle>
                 <div class="subtitle">
@@ -25,11 +25,12 @@
             </template>
             <template #footer>
                 <div class="footer">
-                    <Button icon="pi pi-bookmark" label="Fashion" class="p-button-rounded p-button-outlined" />
+                    <Button icon="pi pi-bookmark" class="p-button-outlined" style="width: 100px;">{{ category }}</Button>
                 </div>
               </template>
-        </Card>
-    </div>
+            </Card>
+          </router-link>
+          </div>
 </template>
 
 <script>
@@ -64,6 +65,11 @@ export default {
       type: Number
     }
   },
+  computed: {
+    singlePhoto () {
+      return `/${this._id}`
+    }
+  },
   components: { Card, Button }
 }
 </script>
@@ -74,15 +80,18 @@ export default {
   border-radius: 15px;
   margin-left: 5px;
   margin-top: 5px;
-  max-height: 700px;
+  max-height: 600px;
+  min-height: 600px;
 }
 
 .image {
     position: relative;
     display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    height: 100%;
     .vote {
         position: absolute;
-        margin-left: 180px;
         display: flex;
         align-items: center;
 

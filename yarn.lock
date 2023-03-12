@@ -1323,6 +1323,11 @@
   dependencies:
     "@types/node" "*"
 
+"@vee-validate/rules@^4.7.4":
+  "integrity" "sha512-rWpmGKB/jy7/jbuAH/pfCYoCjiYDx77geNEaYeTl07eHo+2jL+j802Ttn85cTJsMUeXzRSUauepvNCpkVWV+aA=="
+  "resolved" "https://registry.npmjs.org/@vee-validate/rules/-/rules-4.7.4.tgz"
+  "version" "4.7.4"
+
 "@vue/babel-helper-vue-jsx-merge-props@^1.4.0":
   "integrity" "sha512-JkqXfCkUDp4PIlFdDQ0TdXoIejMtTHP67/pvxlgeY+u5k3LEdKuWZ3LK6xkxo52uDoABIVyRwqVkfLQJhk7VBA=="
   "resolved" "https://registry.npmjs.org/@vue/babel-helper-vue-jsx-merge-props/-/babel-helper-vue-jsx-merge-props-1.4.0.tgz"

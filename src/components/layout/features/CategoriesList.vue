@@ -1,10 +1,13 @@
 <template>
-     <ul class="categorie">
-      <router-link to="/photos/:category" class="no-underline">
-        <Button
-        :key="id"
-        v-for="(category, id) in categories"
-        class="p-button-rounded p-button-outlined ml-2">{{ category.name }}</Button></router-link>
+     <ul class="categories">
+      <router-link
+          :key="id"
+          v-for="(category, id) in categories"
+          :to="`/photos/${category.name}`"
+          class="no-underline"
+        >
+          <Button class="p-button-rounded p-button-outlined ml-2">{{ category.name }}
+        </Button></router-link>
     </ul>
 </template>
 
@@ -14,7 +17,9 @@ import Button from 'primevue/button'
 
 export default {
   name: 'CategoriesList',
-  computed: mapGetters('Categories', { categories: 'Categories' }),
+  computed: {
+    ...mapGetters('Categories', { categories: 'Categories' })
+  },
   components: { Button }
 }
 

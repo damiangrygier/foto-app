@@ -14,9 +14,6 @@
                 :category="photo.category"
                 :__v=0
                 @vote="votes" >
-                <!-- <div @vote="votes" class="starImage">
-                    <i class="pi pi-star"></i>
-                </div> -->
             </photo-summary>
             </div>
             <span v-else>Brak zdjęć do wyświetlenia</span>
@@ -37,7 +34,6 @@ export default {
   methods: {
     votes (_id) {
       this.$emit('vote', _id)
-      console.log(_id)
     }
   },
   components: { PhotoSummary }
@@ -59,26 +55,6 @@ export default {
 }
     @media only screen and (max-width: 600px) {
     grid-template-columns: 100%;
-}
-
-.starImage {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-        display: none;
-        background-color: rgba(155, 89, 182, 0.3);
-    i {
-        font-size: 40px;
-        color: rgb(212, 26, 200);
-        margin-left: 90px;
-        margin-top: 180px;
-    }
-}
-
-:hover {
-    .starImage {
-        display: block;
-    }
 }
 }
 
